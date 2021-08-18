@@ -6,39 +6,47 @@ class Event extends Component {
     showDetails: false
   }
 
-  handleButton() {
-    this.setState({
-      showDetails: !showDetails
-    });
+  handleButton = () => {
+    this.setState(function (prevState) {
+      return {
+        showDetails: !prevState.showDetails
+      }
+    })
   };
+
 
   render() {
 
     let event = this.props.event;
 
-    return <div>
-      <div className='basicInfo'>
-        <p>{event.start.dateTime}</p>
-        <h2>{event.summary}</h2>
-        <p>{event.location}</p>
-        {/* not sure how to implement number of people going or group hosting?? */}
+    return (
+      <div>
+        <div className='basicInfo'>
+          <p className='dateTime'>{event.start.dateTime}</p>
+          <h2 className='summary'>{event.summary}</h2>
+          <p className='location'>{event.location}</p>
+
+        </div>
+        {this.state.showDetails === false &&
+          <button
+            type='submit'
+            className='detailsButton'
+            onClick={() => this.handleButton()}>
+            Show More
+          </button>}
+        {this.state.showDetails === true && <div>
+          <p className='eventDescription'>{event.description}</p>
+          <button
+            type='submit'
+            className='detailsButton'
+            onClick={() => this.handleButton()}>
+            Show Less
+          </button>
+        </div>
+        }
+
       </div>
-      if (this.state.showDetails === false) return
-      (<button
-        type='submit'
-        className='detailsButton showDetails'
-        onClick={() => this.handleButton()}>
-        More
-      </button>);
-      if (this.state.showDetails === true) return
-      ((<p>{event.description}</p>)
-      <button
-        type='submit'
-        className='detailsButton showDetails'
-        onClick={() => this.handleButton()}>
-        Details
-      </button>);
-    </div>;
+    );
   }
 }
 export default Event;
