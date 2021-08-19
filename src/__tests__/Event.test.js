@@ -16,7 +16,7 @@ describe('<Event /> component', () => {
 
   test('render event collapsed info', () => {
     expect(EventWrapper.find('.basicInfo')).toHaveLength(1);
-    expect(EventWrapper.find('.dateTime').text()).toEqual('2020-05-19T16:00:00+02:00');
+    expect(EventWrapper.find('.dateTime').text()).toEqual('2020-05-19T16:00:00+02:00 Europe/Berlin');
     expect(EventWrapper.find('.summary').text()).toEqual('Learn JavaScript');
     expect(EventWrapper.find('.location').text()).toEqual('London, UK');
 
