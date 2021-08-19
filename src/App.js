@@ -11,7 +11,8 @@ class App extends Component {
 
   state = {
     events: [],
-    locations: []
+    locations: [],
+    eventsDisplayed: 32
   }
 
   componentDidMount() {
@@ -42,7 +43,7 @@ class App extends Component {
     return (
       <div className='App'>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <NumberOfEvents />
+        <NumberOfEvents eventsDisplayed={this.state.eventsDisplayed} />
         <EventList events={this.state.events} />
       </div>
     );
@@ -50,3 +51,4 @@ class App extends Component {
 }
 
 export default App;
+

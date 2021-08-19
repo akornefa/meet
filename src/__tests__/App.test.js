@@ -66,4 +66,22 @@ describe('<App /> integration', () => {
     expect(AppWrapper.state('events')).toEqual(allEvents);
     AppWrapper.unmount();
   });
+
+  test('App passes "eventsDisplayed" state as a prop to NumberOfEvents', () => {
+    const AppWrapper = mount(<App />);
+    const AppEventsDisplayedState = AppWrapper.state('eventsDisplayed');
+    expect(AppEventsDisplayedState).not.toEqual(undefined);
+    expect(AppWrapper.find(NumberOfEvents).props().eventsDisplayed).toEqual.AppEventsDisplayedState;
+    expect(AppWrapper.find(NumberOfEvents).props().eventsDisplayed).toEqual(32);
+    AppWrapper.unmount();
+  });
+
+  test('get number of default events in "eventsDisplayed" when page loads', async () => {
+    const AppWrapper = mount(<App />);
+    AppWrapper.setState({
+      eventsDisplayed: 32
+    })
+    const loadEvents = await getEvents();
+    AppWrapper.setState({ events: loadEvents });
+  })
 });
