@@ -16,6 +16,7 @@ class NumberOfEvents extends Component {
   render() {
     return (
       <div>
+        <p>Number of Events: </p>
         <input
           type='text'
           value={this.state.eventsDisplayed}
