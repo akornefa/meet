@@ -47,12 +47,12 @@ describe('<App /> integration', () => {
     const AppWrapper = mount(<App />);
     const CitySearchWrapper = AppWrapper.find(CitySearch);
     const locations = extractLocations(mockData);
-    CitySearchWrapper.setState({ suggestions: locations });
+    CitySearchWrapper.setState({ suggestions: locations }); //set to have all available locations
     const suggestions = CitySearchWrapper.state('suggestions');
     const selectedIndex = Math.floor(Math.random() * (suggestions.length));
     const selectedCity = suggestions[selectedIndex];
     await CitySearchWrapper.instance().handleItemClicked(selectedCity);
-    const allEvents = await getEvents();
+    const allEvents = await getEvents(); //entire array of events
     const eventsToShow = allEvents.filter(event => event.location === selectedCity);
     expect(AppWrapper.state('events')).toEqual(eventsToShow);
     AppWrapper.unmount();
@@ -78,10 +78,18 @@ describe('<App /> integration', () => {
 
   test('get number of default events in "eventsDisplayed" when page loads', async () => {
     const AppWrapper = mount(<App />);
-    AppWrapper.setState({
-      eventsDisplayed: 32
-    })
-    const loadEvents = await getEvents();
-    AppWrapper.setState({ events: loadEvents });
+    await getEvents();
+    expect(AppWrapper.state('events').length).toEqual(mockData.length)
+  });
+
+  test('get number of events matching number entered in NumberOfEvents textbox by user', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    NumberOfEventsWrapper.setState({ eventsDisplayed: 32 });
+    NumberOfEventsWrapper.find('.eventsNumber').simulate('change', { target: { value: 1 } });
+    await getEvents();
+    expect(NumberOfEventsWrapper.state('eventsDisplayed')).toBe(1);
+    expect(AppWrapper.state('events').length).toBe(1);
+    AppWrapper.unmount()
   })
 });
