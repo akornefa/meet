@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 class Event extends Component {
 
@@ -21,32 +22,35 @@ class Event extends Component {
     let event = this.props.event;
 
     return (
-      <div>
-        <div className='basicInfo'>
-          <p className='dateTime'>{event.start.dateTime} {event.start.timeZone}</p>
-          <h2 className='summary'>{event.summary}</h2>
-          <p className='location'>{event.location}</p>
+      <Card>
+        <Card.Body>
+          <div className='basicInfo'>
+            <Card.Header className='dateTime'>{event.start.dateTime} {event.start.timeZone}</Card.Header>
+            <Card.Title className='summary'>{event.summary}</Card.Title>
+            <Card.Text className='location'>{event.location}</Card.Text>
 
-        </div>
-        {this.state.showDetails === false &&
-          <button
-            type='submit'
-            className='detailsButton'
-            onClick={() => this.handleButton()}>
-            Show More
-          </button>}
-        {this.state.showDetails === true && <div>
-          <p className='eventDescription'>{event.description}</p>
-          <button
-            type='submit'
-            className='detailsButton'
-            onClick={() => this.handleButton()}>
-            Show Less
-          </button>
-        </div>
-        }
-
-      </div>
+          </div>
+          {this.state.showDetails === false &&
+            <Button
+              variant="outline-dark"
+              type='submit'
+              className='detailsButton'
+              onClick={() => this.handleButton()}>
+              Show More
+            </Button>}
+          {this.state.showDetails === true && <div>
+            <p className='eventDescription'>{event.description}</p>
+            <Button
+              variant="outline-dark"
+              type='submit'
+              className='detailsButton'
+              onClick={() => this.handleButton()}>
+              Show Less
+            </Button>
+          </div>
+          }
+        </Card.Body>
+      </Card>
     );
   }
 }
