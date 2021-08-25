@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import InputGroup from 'react-bootstrap/InputGroup'
+
 
 class NumberOfEvents extends Component {
 
@@ -17,15 +19,15 @@ class NumberOfEvents extends Component {
 
   render() {
     return (
-      <div>
-        <p>Number of Events: </p>
+      <InputGroup>
+        <InputGroup.Text>Number of Events: </InputGroup.Text>
         <input
           type='text'
           value={this.state.eventsDisplayed}
           onChange={this.handleInputChanged}
           className='eventsNumber'>
         </input>
-      </div>
+      </InputGroup>
     );
   }
 }
