@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
   text-align: center;
   padding: 2% 5%;
@@ -6,14 +6,14 @@
 
 .App * {
   box-sizing: border-box;
-}
+} */
 
 ul {
   padding: 0;
   list-style: none;
 }
 
-p {
+/* p {
   margin: 5px 0;
 }
 
@@ -22,9 +22,9 @@ p {
 }
 .showSuggestions {
   display: block;
-}
+} */
 
-input[type="text"],
+/* input[type="text"],
 input[type="number"] {
   padding: 8px 6px 8px 10px;
   border-radius: 4px;
@@ -34,9 +34,9 @@ input[type="number"] {
   line-height: 20px;
   align-self: center;
   height: 38px;
-}
+} */
 
-.city {
+/* .city {
   width: 250px;
 }
 
@@ -210,4 +210,4 @@ input[type="number"] {
     min-width: auto;
     margin: 0 auto;
   }
-}
+} */
