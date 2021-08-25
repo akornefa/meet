@@ -51,24 +51,22 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
-        <div className='App'>
-          <Row>
-            <Col md={6}>
-              <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-            </Col>
-          </Row>
-          <Row>
-            <Col md={6}>
-              <NumberOfEvents eventsDisplayed={this.state.eventsDisplayed} updateEvents={this.updateEvents} currentCity={this.state.currentCity} />
-            </Col>
-          </Row>
-          <Row>
-            <Col md={6}>
-              <EventList events={this.state.events} />
-            </Col>
-          </Row>
-        </div>
+      <Container className='App '>
+        <Row className="justify-content-md-center">
+          <Col md={6}>
+            <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Col md={6}>
+            <NumberOfEvents eventsDisplayed={this.state.eventsDisplayed} updateEvents={this.updateEvents} currentCity={this.state.currentCity} />
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Col md={6}>
+            <EventList events={this.state.events} />
+          </Col>
+        </Row>
       </Container>
     );
   }
