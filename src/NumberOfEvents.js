@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { ErrorAlert } from './Alert';
 import InputGroup from 'react-bootstrap/InputGroup'
 
 
@@ -7,13 +7,24 @@ class NumberOfEvents extends Component {
 
   state = {
     eventsDisplayed: 32,
+    errorText: ''
   }
 
   handleInputChanged = (event) => {
     const value = +event.target.value;
-    this.setState({ eventsDisplayed: value });
+    if (value <= 0 || value >= 51) {
+      this.setState({
+        errorText: 'only numbers 1 through 50 are valid',
+        eventsDisplayed: ''
+      });
+    } else {
+      this.setState({
+        eventsDisplayed: value,
+        errorText: ''
+      });
 
-    this.props.updateEvents(this.props.currentCity, value);
+      this.props.updateEvents(this.props.currentCity, value);
+    }
   }
 
 
@@ -27,6 +38,7 @@ class NumberOfEvents extends Component {
           onChange={this.handleInputChanged}
           className='eventsNumber'>
         </input>
+        <ErrorAlert text={this.state.errorText} />
       </InputGroup>
     );
   }
