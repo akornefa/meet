@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { InfoAlert } from './Alert';
+import InputGroup from 'react-bootstrap/InputGroup'
 
 class CitySearch extends Component {
 
@@ -41,9 +42,10 @@ class CitySearch extends Component {
 
   render() {
     return (
-      <div className='CitySearch'>
+
+      <InputGroup className='CitySearch'>
         <InfoAlert text={this.state.infoText} />
-        <p>Search by city: </p>
+        <InputGroup.Text>Search by city: </InputGroup.Text>
         <input
           type='text'
           className='city'
@@ -62,7 +64,8 @@ class CitySearch extends Component {
             <b>See all cities</b>
           </li>
         </ul>
-      </div>
+
+      </InputGroup>
     );
   }
 }
