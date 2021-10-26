@@ -4,6 +4,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
+import { OfflineAlert } from './Alert';
 import './nprogress.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -54,6 +55,7 @@ class App extends Component {
       <Container className='App '>
         <Row className="justify-content-md-center">
           <Col md={6}>
+            {!navigator.onLine ? (<OfflineAlert text='You are offline!' />) : (<OfflineAlert text=' ' />)}
             <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           </Col>
         </Row>
