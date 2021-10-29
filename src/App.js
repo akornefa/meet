@@ -3,12 +3,14 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { getEvents, extractLocations } from './api';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import { OfflineAlert } from './Alert';
 import './nprogress.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
+import WelcomeScreen from './WelcomeScreen';
 
 
 class App extends Component {
@@ -17,7 +19,8 @@ class App extends Component {
     events: [],
     locations: [],
     eventsDisplayed: 32,
-    currentCity: 'all'
+    currentCity: 'all',
+    showWelcomeScreen: undefined
   }
 
   componentDidMount() {
@@ -51,6 +54,8 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.showWelcomeScreen === undefined) return <div
+      className="App" />
     return (
       <Container className='App '>
         <Row className="justify-content-md-center">
@@ -69,6 +74,8 @@ class App extends Component {
             <EventList events={this.state.events} />
           </Col>
         </Row>
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => { getAccessToken() }} />
       </Container>
     );
   }
