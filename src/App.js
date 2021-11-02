@@ -79,7 +79,9 @@ class App extends Component {
       className="App" />
     return (
       <Container className='App '>
-        <h1>Meet App</h1>
+        <Row className="justify-content-md-center">
+          <h1>Meet App</h1>
+        </Row>
         <Row className="justify-content-md-center">
           <Col md={6}>
             {!navigator.onLine ? (<OfflineAlert text='You are offline!' />) : (<OfflineAlert text=' ' />)}
