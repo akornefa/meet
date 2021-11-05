@@ -12,7 +12,7 @@ import Col from 'react-bootstrap/Col';
 import {
   ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
-
+import EventGenre from './EventGenre';
 import WelcomeScreen from './WelcomeScreen';
 
 
@@ -94,25 +94,28 @@ class App extends Component {
             <NumberOfEvents eventsDisplayed={this.state.eventsDisplayed} updateEvents={this.updateEvents} currentCity={this.state.currentCity} />
           </Col>
         </Row>
-        <Row className="justify-content-md-center">
-          <Col md={6}>
-            <h4>Events in each city</h4>
-            <ResponsiveContainer height={400} >
-              <ScatterChart
+        <div className='data-vis-wrapper'>
+          <Row className="justify-content-md-center">
+            <Col md={6}>
+              <h4>Events in each city</h4>
+              <EventGenre events={this.state.events} />
+              <ResponsiveContainer height={400} >
+                <ScatterChart
 
-                margin={{
-                  top: 20, right: 20, bottom: 20, left: 20,
-                }}
-              >
-                <CartesianGrid />
-                <XAxis type="category" dataKey="city" name="city" />
-                <YAxis type="number" dataKey="number" name="number of events" />
-                <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Scatter data={this.getData()} fill="#8884d8" />
-              </ScatterChart>
-            </ResponsiveContainer>
-          </Col>
-        </Row>
+                  margin={{
+                    top: 20, right: 20, bottom: 20, left: 20,
+                  }}
+                >
+                  <CartesianGrid />
+                  <XAxis type="category" dataKey="city" name="city" />
+                  <YAxis type="number" dataKey="number" name="number of events" />
+                  <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+                  <Scatter data={this.getData()} fill="#8884d8" />
+                </ScatterChart>
+              </ResponsiveContainer>
+            </Col>
+          </Row>
+        </div>
         <Row className="justify-content-md-center">
           <Col md={6}>
             <EventList events={this.state.events} />
