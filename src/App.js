@@ -98,7 +98,7 @@ class App extends Component {
           <Row className="justify-content-md-center">
             <Col md={6}>
               <h4>Events in each city</h4>
-              <EventGenre events={this.state.events} />
+              <EventGenre events={events} />
               <ResponsiveContainer height={400} >
                 <ScatterChart
 
