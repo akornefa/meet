@@ -82,14 +82,9 @@ class App extends Component {
       <Container className='App '>
         <Navbar expand="lg" variant="light" bg="light">
           <Container>
-            <Navbar.Brand href="#">Navbar</Navbar.Brand>
+            <Navbar.Brand href="#">MEET</Navbar.Brand>
           </Container>
         </Navbar>
-        <Row className="justify-content-md-center">
-          <Col md={6}>
-            <h1>Meet App</h1>
-          </Col>
-        </Row>
         <Row className="justify-content-md-center">
           <Col md={6}>
             {!navigator.onLine ? (<OfflineAlert text='You are offline!' />) : (<OfflineAlert text=' ' />)}
@@ -97,16 +92,18 @@ class App extends Component {
             <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           </Col>
         </Row>
+        <br />
         <Row className="justify-content-md-center">
           <Col md={6}>
             <NumberOfEvents eventsDisplayed={this.state.eventsDisplayed} updateEvents={this.updateEvents} currentCity={this.state.currentCity} />
           </Col>
+          <br />
         </Row>
         <div className='data-vis-wrapper'>
           <Row className="justify-content-md-center">
             <Col md={6}>
               <h4>Events in each city</h4>
-              <EventGenre events={this.state.events} />
+
               <ResponsiveContainer height={400} >
                 <ScatterChart
 
@@ -121,6 +118,8 @@ class App extends Component {
                   <Scatter data={this.getData()} fill="#8884d8" />
                 </ScatterChart>
               </ResponsiveContainer>
+
+              <EventGenre events={this.state.events} />
             </Col>
           </Row>
         </div>
