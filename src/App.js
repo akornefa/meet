@@ -9,6 +9,7 @@ import './nprogress.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Navbar from 'react-bootstrap/Navbar'
 import {
   ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
@@ -79,8 +80,15 @@ class App extends Component {
       className="App" />
     return (
       <Container className='App '>
+        <Navbar expand="lg" variant="light" bg="light">
+          <Container>
+            <Navbar.Brand href="#">Navbar</Navbar.Brand>
+          </Container>
+        </Navbar>
         <Row className="justify-content-md-center">
-          <h1>Meet App</h1>
+          <Col md={6}>
+            <h1>Meet App</h1>
+          </Col>
         </Row>
         <Row className="justify-content-md-center">
           <Col md={6}>
