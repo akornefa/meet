@@ -62,7 +62,6 @@ class CitySearch extends Component {
             >{suggestion}</li>
           ))}
           <li
-            style="cursor: pointer;"
             onClick={() => this.handleItemClicked("all")}>
             <b>See all cities</b>
           </li>
