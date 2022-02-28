@@ -6,6 +6,7 @@ shows a chart with the number of upcoming events in each city.
 
 to run, type "npm run start"
 
+See the Meet app in action here: https://akornefa.github.io/meet/
 # User Stories
 
 * Feature 1:
